@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MuniAnnouncements – הבקשות שלי | User Stories & Tasks</title>
+  <style>
+    :root {
+      --blue:    #1a56db;
+      --blue-lt: #e8f0fe;
+      --green:   #057a55;
+      --green-lt:#def7ec;
+      --orange:  #b45309;
+      --orange-lt:#fef3c7;
+      --red:     #c81e1e;
+      --red-lt:  #fde8e8;
+      --gray:    #374151;
+      --gray-lt: #f9fafb;
+      --border:  #e5e7eb;
+      --radius:  10px;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f3f4f6;
+      color: var(--gray);
+      padding: 2rem 1rem;
+      line-height: 1.6;
+    }
+
+    /* ── Header ── */
+    header {
+      background: linear-gradient(135deg, #1e3a8a 0%, #1a56db 100%);
+      color: #fff;
+      border-radius: var(--radius);
+      padding: 2rem 2.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 16px rgba(26,86,219,.25);
+    }
+    header h1 { font-size: 1.8rem; margin-bottom: .4rem; }
+    header p  { opacity: .85; font-size: .95rem; }
+    .badge-row { display: flex; gap: .6rem; flex-wrap: wrap; margin-top: 1rem; }
+    .badge {
+      background: rgba(255,255,255,.18);
+      border: 1px solid rgba(255,255,255,.35);
+      border-radius: 20px;
+      padding: .2rem .8rem;
+      font-size: .8rem;
+      font-weight: 600;
+    }
+
+    /* ── Section title ── */
+    .section-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #1e3a8a;
+      margin: 2rem 0 1rem;
+      padding-bottom: .4rem;
+      border-bottom: 3px solid var(--blue);
+    }
+
+    /* ── US Card ── */
+    .us-card {
+      background: #fff;
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      margin-bottom: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 2px 8px rgba(0,0,0,.06);
+    }
+
+    .us-header {
+      display: flex;
+      align-items: flex-start;
+      gap: 1rem;
+      padding: 1.2rem 1.5rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .us-header:hover { background: var(--gray-lt); }
+
+    .us-id {
+      background: var(--blue);
+      color: #fff;
+      border-radius: 6px;
+      padding: .25rem .7rem;
+      font-size: .8rem;
+      font-weight: 700;
+      white-space: nowrap;
+      margin-top: .15rem;
+    }
+
+    .us-title { font-size: 1.05rem; font-weight: 700; flex: 1; }
+    .us-persona {
+      font-size: .82rem;
+      color: #6b7280;
+      margin-top: .25rem;
+      font-style: italic;
+    }
+
+    .toggle-icon {
+      font-size: 1.1rem;
+      color: var(--blue);
+      transition: transform .25s;
+      margin-top: .1rem;
+    }
+    .us-card.open .toggle-icon { transform: rotate(180deg); }
+
+    /* ── Tasks table ── */
+    .us-body { display: none; padding: 0 1.5rem 1.5rem; }
+    .us-card.open .us-body { display: block; }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+      margin-top: .75rem;
+    }
+    thead tr { background: var(--blue-lt); }
+    th {
+      padding: .6rem .9rem;
+      text-align: right;
+      font-weight: 700;
+      color: #1e3a8a;
+      border-bottom: 2px solid var(--blue);
+    }
+    td {
+      padding: .55rem .9rem;
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+    tr:last-child td { border-bottom: none; }
+    tr:hover td { background: var(--gray-lt); }
+
+    .task-id {
+      font-family: monospace;
+      font-weight: 700;
+      color: var(--blue);
+      white-space: nowrap;
+    }
+
+    .time-badge {
+      background: var(--green-lt);
+      color: var(--green);
+      border-radius: 12px;
+      padding: .15rem .6rem;
+      font-size: .8rem;
+      font-weight: 600;
+      white-space: nowrap;
+    }
+    .time-badge.included {
+      background: #f3f4f6;
+      color: #6b7280;
+    }
+
+    /* ── Category colors ── */
+    .cat-backend  .us-id { background: #1a56db; }
+    .cat-frontend .us-id { background: #057a55; }
+    .cat-tests    .us-id { background: #b45309; }
+
+    .cat-backend  .us-header:hover { background: var(--blue-lt); }
+    .cat-frontend .us-header:hover { background: var(--green-lt); }
+    .cat-tests    .us-header:hover { background: var(--orange-lt); }
+
+    .cat-frontend thead tr { background: var(--green-lt); }
+    .cat-frontend th { color: var(--green); border-color: var(--green); }
+
+    .cat-tests thead tr { background: var(--orange-lt); }
+    .cat-tests th { color: var(--orange); border-color: var(--orange); }
+
+    /* ── Clarifications ── */
+    .clarification-list { list-style: none; }
+    .clarification-list li {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1rem 1.2rem;
+      margin-bottom: .75rem;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .clarification-list li strong { color: #1e3a8a; }
+    .assumption {
+      display: inline-block;
+      background: var(--orange-lt);
+      color: var(--orange);
+      border-radius: 4px;
+      padding: .1rem .5rem;
+      font-size: .78rem;
+      font-weight: 700;
+      margin-right: .4rem;
+    }
+
+    /* ── Summary ── */
+    .summary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .summary-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+      box-shadow: 0 1px 4px rgba(0,0,0,.05);
+    }
+    .summary-card .num {
+      font-size: 2rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .summary-card .lbl { font-size: .82rem; color: #6b7280; margin-top: .2rem; }
+    .summary-card.total .num { color: #1e3a8a; }
+
+    footer {
+      text-align: center;
+      color: #9ca3af;
+      font-size: .8rem;
+      margin-top: 2.5rem;
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>MuniAnnouncements_RA – "הבקשות שלי"</h1>
+  <p>User Stories &amp; Tasks | ספרינט – אזור אישי תושב</p>
+  <div class="badge-row">
+    <span class="badge">C# / .NET Core</span>
+    <span class="badge">Microservice</span>
+    <span class="badge">Angular</span>
+    <span class="badge">MongoDB</span>
+    <span class="badge">JWT Auth</span>
+    <span class="badge">RTL · נגישות</span>
+  </div>
+</header>
+
+<!-- ═══════════════════════════════════════════
+     BACKEND
+════════════════════════════════════════════ -->
+<div class="section-title">🔧 Backend – C# / .NET Core</div>
+
+<!-- US-1 -->
+<div class="us-card cat-backend open" id="us1">
+  <div class="us-header" onclick="toggle('us1')">
+    <span class="us-id">US-1</span>
+    <div style="flex:1">
+      <div class="us-title">צפייה בבקשות שהוגשו</div>
+      <div class="us-persona">כתושב מחובר, אני רוצה לראות את כל הבקשות שהגשתי לרשויות השונות, כדי לעקוב אחר הסטטוס שלהן ממקום אחד.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table>
+      <thead>
+        <tr>
+          <th>Task</th>
+          <th>תיאור</th>
+          <th>הערכת זמן</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task-id">T1.1</td>
+          <td>הגדרת מודלים: <code>RawRequest</code>, <code>NormalizedRequest</code>, <code>ServiceCatalogEntry</code></td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T1.2</td>
+          <td>ממשק <code>IFormsSystemClient</code> + מימוש Mock עם Hard-Coded data</td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T1.3</td>
+          <td>ממשק <code>IServiceCatalogRepository</code> + מימוש Mock עם Hard-Coded data</td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T1.4</td>
+          <td><code>NormalizationService</code> – לוגיקת נרמול מלאה (סעיפים 4.1–4.7): שם שירות, שם רשות, תרגום סטטוס, actionRequired, isOverdue, מיון, הסתרת ת"ז</td>
+          <td><span class="time-badge">3h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T1.5</td>
+          <td><code>RequestsController</code> – endpoint מאובטח <code>GET /api/my-requests</code>, קריאת claim <code>idNumber</code></td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T1.6</td>
+          <td>רישום DI ב-<code>Program.cs</code> + Middleware לאימות JWT</td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- US-2 -->
+<div class="us-card cat-backend" id="us2">
+  <div class="us-header" onclick="toggle('us2')">
+    <span class="us-id">US-2</span>
+    <div style="flex:1">
+      <div class="us-title">הצגת סטטוס, פעולה נדרשת וחריגת SLA</div>
+      <div class="us-persona">כתושב, אני רוצה לדעת אם נדרשת ממני פעולה ואם הבקשה חרגה מזמן הטיפול.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table>
+      <thead>
+        <tr><th>Task</th><th>תיאור</th><th>הערכת זמן</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task-id">T2.1</td>
+          <td>לוגיקת <code>actionRequired</code> – בדיקה מול <code>actionRequiredStatuses</code></td>
+          <td><span class="time-badge included">כלול ב-T1.4</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T2.2</td>
+          <td>לוגיקת <code>isOverdue</code> – חישוב ימים מ-<code>submittedAt</code> מול <code>slaDays</code>, רק לבקשות שאינן ב-<code>finalStatuses</code></td>
+          <td><span class="time-badge included">כלול ב-T1.4</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T2.3</td>
+          <td>מיון תוצאות: <code>actionRequired</code> קודם, אחר כך <code>lastUpdate</code> DESC</td>
+          <td><span class="time-badge included">כלול ב-T1.4</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T2.4</td>
+          <td>סטטוס לא מוכר → ערך ברירת מחדל "בטיפול" + כתיבה ל-Log</td>
+          <td><span class="time-badge included">כלול ב-T1.4</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T2.5</td>
+          <td><code>formCode</code> לא קיים בקטלוג → סינון מהתשובה + כתיבה ל-Log</td>
+          <td><span class="time-badge included">כלול ב-T1.4</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     FRONTEND
+════════════════════════════════════════════ -->
+<div class="section-title">🎨 Frontend – Angular</div>
+
+<!-- US-3 -->
+<div class="us-card cat-frontend" id="us3">
+  <div class="us-header" onclick="toggle('us3')">
+    <span class="us-id">US-3</span>
+    <div style="flex:1">
+      <div class="us-title">רכיב "הבקשות שלי" – תצוגה ראשית</div>
+      <div class="us-persona">כתושב, אני רוצה לראות את הבקשות בממשק ברור, נגיש ורספונסיבי.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table>
+      <thead>
+        <tr><th>Task</th><th>תיאור</th><th>הערכת זמן</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task-id">T3.1</td>
+          <td><code>MyRequestsComponent</code> – קריאה ל-<code>GET /api/my-requests</code> והצגת רשימת בקשות</td>
+          <td><span class="time-badge">2h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T3.2</td>
+          <td>סימון בולט לבקשות עם <code>actionRequired: true</code> + קריאה לפעולה (CTA)</td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T3.3</td>
+          <td>סימון ויזואלי לבקשות עם <code>isOverdue: true</code></td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T3.4</td>
+          <td>מצב ריק – הצגת הטקסט "עדיין לא הגשת בקשות"</td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T3.5</td>
+          <td>מצב שגיאה – הודעה ידידותית + כפתור "נסה שוב"</td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T3.6</td>
+          <td>RTL, עיצוב רספונסיבי, נגישות מלאה (ARIA labels, contrast, keyboard nav)</td>
+          <td><span class="time-badge">1h</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     TESTS
+════════════════════════════════════════════ -->
+<div class="section-title">🧪 בדיקות יחידה</div>
+
+<!-- US-4 -->
+<div class="us-card cat-tests" id="us4">
+  <div class="us-header" onclick="toggle('us4')">
+    <span class="us-id">US-4</span>
+    <div style="flex:1">
+      <div class="us-title">כיסוי בדיקות לוגיקת הנרמול</div>
+      <div class="us-persona">כמפתח, אני רוצה לוודא שלוגיקת הנרמול עובדת נכון בכל תרחיש קצה.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table>
+      <thead>
+        <tr><th>Task</th><th>תיאור</th><th>הערכת זמן</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="task-id">T4.1</td>
+          <td>נרמול תקין – שם שירות, שם רשות ושם סטטוס מוחזרים נכון</td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T4.2</td>
+          <td>סטטוס לא מוכר → ערך "בטיפול" + וידוא כתיבה ל-Log</td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T4.3</td>
+          <td>חריגת SLA – בקשה פתוחה שעברו עליה יותר מ-<code>slaDays</code> → <code>isOverdue: true</code></td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T4.4</td>
+          <td><code>formCode</code> לא קיים בקטלוג → הבקשה לא מוחזרת ללקוח</td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+        <tr>
+          <td class="task-id">T4.5</td>
+          <td>מיון – בקשה עם <code>actionRequired</code> מופיעה לפני בקשה ללא, ללא תלות בתאריך</td>
+          <td><span class="time-badge">0.5h</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════
+     CLARIFICATIONS
+════════════════════════════════════════════ -->
+<div class="section-title">❓ שאלות הבהרה (Grooming)</div>
+
+<ul class="clarification-list">
+  <li>
+    <strong>Q1 – אימות JWT:</strong> האם קיים Identity Provider מרכזי (Keycloak / Azure AD) שמנפיק את הטוקן, או שיש לדמות אותו?<br/>
+    <span class="assumption">הנחה</span> משתמשים ב-JWT סטנדרטי עם claim בשם <code>idNumber</code>. אממש Middleware שמאמת חתימה עם מפתח סימטרי מה-config.
+  </li>
+  <li>
+    <strong>Q2 – isOverdue ובקשות סגורות:</strong> האם בקשה ב-<code>finalStatuses</code> נחשבת "סגורה" לצורך חישוב SLA?<br/>
+    <span class="assumption">הנחה</span> כן – רק בקשות שאינן ב-<code>finalStatuses</code> נבדקות לחריגת SLA.
+  </li>
+  <li>
+    <strong>Q3 – פורמט תאריך:</strong> האובייקט המנורמל מציג <code>"02/09/2026"</code> – האם הפורמט הוא DD/MM/YYYY?<br/>
+    <span class="assumption">הנחה</span> כן, DD/MM/YYYY.
+  </li>
+  <li>
+    <strong>Q4 – ריבוי רשויות:</strong> האם תושב יכול להגיש אותו <code>formCode</code> לשתי רשויות שונות?<br/>
+    <span class="assumption">הנחה</span> כן – כל <code>requestId</code> הוא ייחודי, ניתן להגיש אותו טופס לרשויות שונות.
+  </li>
+</ul>
+
+<!-- ═══════════════════════════════════════════
+     SUMMARY
+════════════════════════════════════════════ -->
+<div class="section-title">📊 סיכום זמנים</div>
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="num">8h</div>
+    <div class="lbl">🔧 Backend</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">5.5h</div>
+    <div class="lbl">🎨 Frontend</div>
+  </div>
+  <div class="summary-card">
+    <div class="num">2.5h</div>
+    <div class="lbl">🧪 בדיקות</div>
+  </div>
+  <div class="summary-card total">
+    <div class="num">16h</div>
+    <div class="lbl">⏱ סה"כ</div>
+  </div>
+</div>
+
+<footer>
+  <p style="margin-top:2rem">MuniAnnouncements_RA · מחלקת יישום רשויות מקומיות · יחידת השירותים הדיגיטליים</p>
+</footer>
+
+<script>
+  function toggle(id) {
+    document.getElementById(id).classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

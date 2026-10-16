@@ -1,0 +1,11 @@
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\bin\Debug\net8.0\MuniAnnouncements.Core.deps.json
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\bin\Debug\net8.0\MuniAnnouncements.Core.dll
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\bin\Debug\net8.0\MuniAnnouncements.Core.pdb
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\MuniAnnouncements.Core.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\MuniAnnouncements.Core.AssemblyInfoInputs.cache
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\MuniAnnouncements.Core.AssemblyInfo.cs
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\MuniAnnouncements.Core.csproj.CoreCompileInputs.cache
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\MuniAnnouncements.Core.dll
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\refint\MuniAnnouncements.Core.dll
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\MuniAnnouncements.Core.pdb
+c:\Users\ed1518\source\repos\MuniAnnouncements\MuniAnnouncements.Core\obj\Debug\net8.0\ref\MuniAnnouncements.Core.dll

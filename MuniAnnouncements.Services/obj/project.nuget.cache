@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "o6kSmACR6Os=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\MuniAnnouncements.Services.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\ed1518\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\10.0.13\\microsoft.extensions.dependencyinjection.abstractions.10.0.13.nupkg.sha512",
+    "C:\\Users\\ed1518\\.nuget\\packages\\microsoft.extensions.logging.abstractions\\10.0.13\\microsoft.extensions.logging.abstractions.10.0.13.nupkg.sha512",
+    "C:\\Users\\ed1518\\.nuget\\packages\\system.diagnostics.diagnosticsource\\10.0.13\\system.diagnostics.diagnosticsource.10.0.13.nupkg.sha512"
+  ],
+  "logs": []
+}

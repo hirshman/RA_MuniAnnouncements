@@ -1,0 +1,8 @@
+@HostAddress = https://localhost:7224
+@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZE51bWJlciI6IjAxMjM0NTY3OCIsImlzcyI6Ik11bmlBbm5vdW5jZW1lbnRzIiwiYXVkIjoiTXVuaVBvcnRhbCIsImV4cCI6OTk5OTk5OTk5OX0.n1eICpGoAahAtIfd7FhvgJNQziUS-L7MtskYiiaG2nU"
+
+GET {{HostAddress}}/api/my-requests
+Authorization: Bearer {{token}}
+Accept: application/json
+
+###

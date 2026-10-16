@@ -1,0 +1,12 @@
+[
+  {
+    "ContainingType": "MuniAnnouncements.Api.Controllers.RequestsController",
+    "Method": "GetMyRequests",
+    "RelativePath": "api/my-requests",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  }
+]

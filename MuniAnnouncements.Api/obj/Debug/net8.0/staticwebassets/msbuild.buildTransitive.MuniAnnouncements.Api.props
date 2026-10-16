@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\MuniAnnouncements.Api.props" />
+</Project>

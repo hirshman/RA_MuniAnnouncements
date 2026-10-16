@@ -1,0 +1,241 @@
+{
+  "format": 1,
+  "restore": {
+    "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Tests\\MuniAnnouncements.Tests.csproj": {}
+  },
+  "projects": {
+    "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj",
+        "projectName": "MuniAnnouncements.Core",
+        "projectPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj",
+        "packagesPath": "C:\\Users\\ed1518\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ed1518\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "\\\\ntdomain\\dfs\\dev\\kits\\dot.Net\\EduNugetPackages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\MuniAnnouncements.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\MuniAnnouncements.Services.csproj",
+        "projectName": "MuniAnnouncements.Services",
+        "projectPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\MuniAnnouncements.Services.csproj",
+        "packagesPath": "C:\\Users\\ed1518\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ed1518\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "\\\\ntdomain\\dfs\\dev\\kits\\dot.Net\\EduNugetPackages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj": {
+                "projectPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.Extensions.Logging.Abstractions": {
+              "target": "Package",
+              "version": "[10.0.13, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Tests\\MuniAnnouncements.Tests.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Tests\\MuniAnnouncements.Tests.csproj",
+        "projectName": "MuniAnnouncements.Tests",
+        "projectPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Tests\\MuniAnnouncements.Tests.csproj",
+        "packagesPath": "C:\\Users\\ed1518\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Tests\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\ed1518\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net8.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
+          "\\\\ntdomain\\dfs\\dev\\kits\\dot.Net\\EduNugetPackages": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net8.0": {
+            "targetAlias": "net8.0",
+            "projectReferences": {
+              "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj": {
+                "projectPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Core\\MuniAnnouncements.Core.csproj"
+              },
+              "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\MuniAnnouncements.Services.csproj": {
+                "projectPath": "C:\\Users\\ed1518\\source\\repos\\MuniAnnouncements\\MuniAnnouncements.Services\\MuniAnnouncements.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        },
+        "restoreAuditProperties": {
+          "enableAudit": "true",
+          "auditLevel": "low",
+          "auditMode": "direct"
+        }
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "dependencies": {
+            "Microsoft.NET.Test.Sdk": {
+              "target": "Package",
+              "version": "[17.8.0, )"
+            },
+            "coverlet.collector": {
+              "target": "Package",
+              "version": "[6.0.0, )"
+            },
+            "xunit": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            },
+            "xunit.runner.visualstudio": {
+              "target": "Package",
+              "version": "[2.5.3, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48",
+            "net481"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}
