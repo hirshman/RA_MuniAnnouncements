@@ -81,29 +81,36 @@
 
 ```
 MuniAnnouncements/
-├── MuniAnnouncements.Api/          # שכבת ה-API – Controllers, Program.cs, JWT
+├── MuniAnnouncements.Api/
 │   ├── Controllers/
 │   │   └── RequestsController.cs
+│   ├── Properties/
+│   │   └── launchSettings.json
 │   ├── Program.cs
-│   └── appsettings.json
+│   ├── appsettings.json
+│   └── MuniAnnouncements.Api.http   ← קובץ בדיקה ידנית
 │
-├── MuniAnnouncements.Core/         # מודלים וממשקים משותפים
+├── MuniAnnouncements.Core/
 │   ├── Models/
-│   │   ├── RawRequest.cs
-│   │   ├── NormalizedRequest.cs
-│   │   └── ServiceCatalogEntry.cs
+│   │   ├── External/
+│   │   │   └── RawRequest.cs        ← מגיע ממערכת הטפסים
+│   │   ├── Db/
+│   │   │   ├── ServiceCatalogEntry.cs  ← מסמך MongoDB
+│   │   │   └── AuthorityConfig.cs
+│   │   └── Response/
+│   │       └── NormalizedRequest.cs ← תשובה ללקוח
 │   └── Interfaces/
 │       ├── IFormsSystemClient.cs
 │       ├── IServiceCatalogRepository.cs
 │       └── INormalizationService.cs
 │
-├── MuniAnnouncements.Services/     # לוגיקה עסקית + Mocks
+├── MuniAnnouncements.Services/
 │   ├── NormalizationService.cs
-│   ├── Mocks/
-│   │   ├── MockFormsSystemClient.cs
-│   │   └── MockServiceCatalogRepository.cs
+│   └── Mocks/
+│       ├── MockFormsSystemClient.cs
+│       └── MockServiceCatalogRepository.cs
 │
-├── MuniAnnouncements.Tests/        # בדיקות יחידה (xUnit)
+├── MuniAnnouncements.Tests/
 │   └── NormalizationServiceTests.cs
 │
 └── README.md
@@ -132,81 +139,47 @@ MuniAnnouncements/
 ---
 
 #### US-2 – הצגת סטטוס, פעולה נדרשת וחריגת SLA
-> כתושב, אני רוצה לדעת אם נדרשת ממני פעולה ואם הבקשה חרגה מזמן הטיפול.
 
 | Task | תיאור | זמן |
 |------|-------|-----|
-| **T2.1** | לוגיקת `actionRequired` – בדיקה מול `actionRequiredStatuses` | כלול ב-T1.4 |
-| **T2.2** | לוגיקת `isOverdue` – ימים מ-`submittedAt` מול `slaDays`, רק לבקשות שאינן ב-`finalStatuses` | כלול ב-T1.4 |
+| **T2.1** | לוגיקת `actionRequired` | כלול ב-T1.4 |
+| **T2.2** | לוגיקת `isOverdue` | כלול ב-T1.4 |
 | **T2.3** | מיון: `actionRequired` קודם, אחר כך `lastUpdate` DESC | כלול ב-T1.4 |
-| **T2.4** | סטטוס לא מוכר → "בטיפול" + כתיבה ל-Log | כלול ב-T1.4 |
-| **T2.5** | `formCode` לא בקטלוג → סינון מהתשובה + כתיבה ל-Log | כלול ב-T1.4 |
-
----
-
-### 🎨 Frontend – Angular
-
-#### US-3 – רכיב "הבקשות שלי" – תצוגה ראשית
-> כתושב, אני רוצה לראות את הבקשות בממשק ברור, נגיש ורספונסיבי.
-
-| Task | תיאור | זמן |
-|------|-------|-----|
-| **T3.1** | `MyRequestsComponent` – קריאה ל-`GET /api/my-requests` והצגת רשימה | 2h |
-| **T3.2** | סימון בולט לבקשות עם `actionRequired: true` + CTA | 1h |
-| **T3.3** | סימון ויזואלי לבקשות עם `isOverdue: true` | 0.5h |
-| **T3.4** | מצב ריק – "עדיין לא הגשת בקשות" | 0.5h |
-| **T3.5** | מצב שגיאה – הודעה ידידותית + כפתור "נסה שוב" | 0.5h |
-| **T3.6** | RTL, עיצוב רספונסיבי, נגישות מלאה (ARIA, contrast, keyboard nav) | 1h |
-
-**סה"כ: 5.5h**
+| **T2.4** | סטטוס לא מוכר → "בטיפול" + Log | כלול ב-T1.4 |
+| **T2.5** | `formCode` לא בקטלוג → סינון + Log | כלול ב-T1.4 |
 
 ---
 
 ### 🧪 בדיקות יחידה – xUnit
 
 #### US-4 – כיסוי בדיקות לוגיקת הנרמול
-> כמפתח, אני רוצה לוודא שלוגיקת הנרמול עובדת נכון בכל תרחיש קצה.
 
 | Task | תיאור | זמן |
 |------|-------|-----|
 | **T4.1** | נרמול תקין – שם שירות, רשות וסטטוס מוחזרים נכון | 0.5h |
-| **T4.2** | סטטוס לא מוכר → "בטיפול" + וידוא כתיבה ל-Log | 0.5h |
-| **T4.3** | חריגת SLA – בקשה פתוחה מעל `slaDays` → `isOverdue: true` | 0.5h |
-| **T4.4** | `formCode` לא בקטלוג → הבקשה לא מוחזרת ללקוח | 0.5h |
-| **T4.5** | מיון – `actionRequired` מופיע לפני בקשה ללא, ללא תלות בתאריך | 0.5h |
+| **T4.2** | סטטוס לא מוכר → "בטיפול" + וידוא Log | 0.5h |
+| **T4.3** | חריגת SLA → `isOverdue: true` | 0.5h |
+| **T4.4** | `formCode` לא בקטלוג → בקשה מסוננת | 0.5h |
+| **T4.5** | מיון – `actionRequired` קודם | 0.5h |
 
 **סה"כ: 2.5h**
-
----
-
-### ⏱️ סיכום זמנים
-
-| שכבה | זמן |
-|------|-----|
-| 🔧 Backend | 8h |
-| 🎨 Frontend | 5.5h |
-| 🧪 בדיקות | 2.5h |
-| **סה"כ** | **16h** |
 
 ---
 
 ## שאלות הבהרה והנחות
 
 ### Q1 – אימות JWT
-**שאלה:** האם קיים Identity Provider מרכזי (Keycloak / Azure AD) שמנפיק את הטוקן, או שיש לדמות אותו?  
-**הנחה:** משתמשים ב-JWT סטנדרטי עם claim בשם `idNumber`. מימוש Middleware שמאמת חתימה עם מפתח סימטרי מה-config (`appsettings.json`).
+**שאלה:** האם קיים Identity Provider מרכזי שמנפיק את הטוקן?  
+**הנחה:** JWT סטנדרטי עם claim `idNumber`, מפתח סימטרי מה-config.
 
 ### Q2 – isOverdue ובקשות סגורות
-**שאלה:** האם בקשה ב-`finalStatuses` נחשבת "סגורה" לצורך חישוב SLA?  
-**הנחה:** כן – רק בקשות שאינן ב-`finalStatuses` נבדקות לחריגת SLA.
+**הנחה:** רק בקשות שאינן ב-`finalStatuses` נבדקות לחריגת SLA.
 
 ### Q3 – פורמט תאריך
-**שאלה:** האובייקט המנורמל מציג `"02/09/2026"` – האם הפורמט הוא DD/MM/YYYY?  
-**הנחה:** כן, DD/MM/YYYY.
+**הנחה:** DD/MM/YYYY.
 
 ### Q4 – ריבוי רשויות
-**שאלה:** האם תושב יכול להגיש אותו `formCode` לשתי רשויות שונות?  
-**הנחה:** כן – כל `requestId` הוא ייחודי; ניתן להגיש אותו טופס לרשויות שונות.
+**הנחה:** כל `requestId` ייחודי; ניתן להגיש אותו טופס לרשויות שונות.
 
 ---
 
@@ -219,7 +192,7 @@ MuniAnnouncements/
   "formCode": "ARNONA_DISCOUNT",
   "authorityId": "6500",
   "applicantId": "012345678",
-  "statusCode": "3",
+  "statusCode": "1",
   "submittedAt": "2026-09-02T10:15:00Z",
   "lastUpdate": "2026-09-20T08:00:00Z"
 }
@@ -234,7 +207,7 @@ MuniAnnouncements/
     "6500": {
       "authorityName": "עיריית חדרה",
       "statusMap": { "1": "נדרשים מסמכים", "2": "בטיפול", "3": "התקבלה", "4": "נדחתה", "5": "אושרה" },
-      "actionRequiredStatuses": ["3"],
+      "actionRequiredStatuses": ["1"],
       "finalStatuses": ["4", "5"],
       "slaDays": 30
     }
@@ -268,59 +241,70 @@ MuniAnnouncements/
 
 ### דרישות מקדימות
 - [.NET 8 SDK](https://dotnet.microsoft.com/download/dotnet/8.0)
-- Visual Studio 2022 / VS Code / Rider
+- Visual Studio 2022 (מומלץ) / VS Code / Rider
 
-### הרצת ה-API
+---
 
+### שלב 1 – הרצת ה-API
+
+#### דרך Visual Studio
+1. פתח את `MuniAnnouncements.sln`
+2. בחר פרופיל הרצה מהתפריט הנפתח:
+   - **`https`** – מומלץ, Kestrel עם SSL על `https://localhost:7224`
+   - **`http`** – ללא SSL על `http://localhost:5255`
+   - **`IIS Express`** – דרך IIS Express על `https://localhost:44336`
+3. לחץ **F5** או **▶ Run**
+4. הדפדפן יפתח אוטומטית ל-`/swagger`
+
+#### דרך Terminal
 ```bash
 cd MuniAnnouncements.Api
 dotnet run
 ```
+ה-API יהיה זמין ב: `https://localhost:7224`
 
-ה-API יהיה זמין בכתובת: `https://localhost:5001`
+---
 
-### קריאה לנקודת הקצה
+### שלב 2 – קבלת JWT Token לבדיקה
 
-```bash
-# קבלת JWT תקף (ראה הגדרות JWT בהמשך)
-curl -X GET https://localhost:5001/api/my-requests \
-  -H "Authorization: Bearer <your_jwt_token>"
+> ⚠️ endpoint זה זמין **בסביבת Development בלבד** – אינו קיים ב-Release/Production.
+
+לאחר הרצת ה-API, פתח בדפדפן:
 ```
-
-### הגדרות JWT ב-appsettings.json
-
-```json
-{
-  "Jwt": {
-    "Key": "<your_symmetric_secret_key_min_32_chars>",
-    "Issuer": "MuniAnnouncements",
-    "Audience": "MuniPortal"
-  }
-}
+https://localhost:7224/api/dev-token?idNumber=012345678
 ```
+התשובה תכיל את הטוקן המוכן לשימוש.
 
-הטוקן חייב לכלול claim בשם `idNumber` עם מספר ת"ז של התושב.
+---
 
-### הרצת בדיקות
+### שלב 3 – בדיקה דרך Swagger UI
+
+1. פתח `https://localhost:7224/swagger`
+2. קרא ל-`GET /api/dev-token` → העתק את ערך `token` מהתשובה
+3. לחץ על כפתור **Authorize** 🔒
+4. הזן: `Bearer <הטוקן שהעתקת>`
+5. לחץ **Authorize** → **Close**
+6. פתח `GET /api/my-requests` → **Try it out** → **Execute**
+
+---
+
+### שלב 4 – בדיקה דרך קובץ `.http` ב-VS
+
+1. פתח את `MuniAnnouncements.Api.http`
+2. לחץ **Send Request** מעל בקשת `GET /api/dev-token` – קבל טוקן
+3. הדבק את הטוקן בשדה `@token`
+4. לחץ **Send Request** מעל בקשת `GET /api/my-requests`
+
+---
+
+### הרצת בדיקות יחידה
 
 ```bash
 cd MuniAnnouncements.Tests
 dotnet test
 ```
 
----
-
-## בדיקות יחידה
-
-הבדיקות מכסות את `NormalizationService` עם 5 תרחישים:
-
-| בדיקה | תרחיש |
-|-------|--------|
-| T4.1 | נרמול תקין – שם שירות, רשות וסטטוס |
-| T4.2 | סטטוס לא מוכר → "בטיפול" + Log |
-| T4.3 | חריגת SLA → `isOverdue: true` |
-| T4.4 | `formCode` לא בקטלוג → בקשה מסוננת |
-| T4.5 | מיון – `actionRequired` קודם |
+או דרך VS: **Test → Run All Tests**
 
 ---
 

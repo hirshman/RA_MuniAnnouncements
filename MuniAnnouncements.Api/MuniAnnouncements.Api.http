@@ -1,5 +1,13 @@
 @HostAddress = https://localhost:7224
-@token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZE51bWJlciI6IjAxMjM0NTY3OCIsImlzcyI6Ik11bmlBbm5vdW5jZW1lbnRzIiwiYXVkIjoiTXVuaVBvcnRhbCIsImV4cCI6OTk5OTk5OTk5OX0.n1eICpGoAahAtIfd7FhvgJNQziUS-L7MtskYiiaG2nU"
+
+### שלב 1 – קבל טוקן לבדיקה (Development בלבד)
+GET {{HostAddress}}/api/dev-token?idNumber=012345678
+Accept: application/json
+
+###
+
+### שלב 2 – הדבק את הטוקן שקיבלת למטה והרץ את הבקשה
+@token = <הדבק_כאן_את_הטוקן_מהתשובה_למעלה>
 
 GET {{HostAddress}}/api/my-requests
 Authorization: Bearer {{token}}
