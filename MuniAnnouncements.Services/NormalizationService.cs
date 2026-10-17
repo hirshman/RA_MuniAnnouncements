@@ -67,16 +67,15 @@ public class NormalizationService : INormalizationService
                 Status        = statusName,
                 ActionRequired = actionRequired,
                 IsOverdue     = isOverdue,
-                // 4.7 – ApplicantId (ת"ז) אינו נכלל בתשובה
-                // 4.6 – פורמט תאריך DD/MM/YYYY
-                SubmittedAt   = raw.SubmittedAt.ToString("dd/MM/yyyy"),
-                LastUpdate    = raw.LastUpdate.ToString("dd/MM/yyyy")
+                SubmittedAt    = raw.SubmittedAt.ToString("dd/MM/yyyy"),
+                LastUpdate     = raw.LastUpdate.ToString("dd/MM/yyyy"),
+                LastUpdateDate = raw.LastUpdate
             });
         }
 
-        // 4.6 – מיון: actionRequired קודם, אחר כך lastUpdate DESC
+        // 4.6 – מיון: actionRequired קודם, אחר כך lastUpdate DESC (לפי DateTime, לא string)
         return result
             .OrderByDescending(r => r.ActionRequired)
-            .ThenByDescending(r => r.LastUpdate);
+            .ThenByDescending(r => r.LastUpdateDate);
     }
 }

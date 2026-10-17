@@ -14,4 +14,7 @@ public class NormalizedRequest
     // פורמט DD/MM/YYYY
     public string SubmittedAt { get; set; } = string.Empty;
     public string LastUpdate { get; set; } = string.Empty;
+    // שדה פנימי למיון – לא מוחזר ב-JSON
+    [System.Text.Json.Serialization.JsonIgnore]
+    public DateTime LastUpdateDate { get; set; }
 }
