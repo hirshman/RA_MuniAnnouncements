@@ -301,12 +301,23 @@ https://localhost:7224/api/dev-token?idNumber=012345678
 
 ### הרצת בדיקות יחידה
 
+#### אפשרות א' – דרך Terminal
+
 ```bash
 cd MuniAnnouncements.Tests
 dotnet test
 ```
 
-או דרך VS: **Test → Run All Tests**
+תוצאה צפויה:
+```
+Passed!  - Failed: 0, Passed: 5, Skipped: 0, Total: 5
+```
+
+#### אפשרות ב' – דרך Visual Studio
+
+1. פתח **Test Explorer**: `Test → Test Explorer` (או `Ctrl+E, T`)
+2. לחץ **Run All Tests** (או `Ctrl+R, A`)
+3. כל בדיקה שעברה מסומנת ✅ ירוק – לחיצה עליה מציגה את פרטי הריצה
 
 ---
 
