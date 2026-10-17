@@ -277,7 +277,11 @@ https://localhost:7224/api/dev-token?idNumber=012345678
 
 ---
 
-### שלב 3 – בדיקה דרך Swagger UI
+### שלב 3 – בדיקת ה-API (לאחר קבלת הטוקן)
+
+ניתן לבחור באחת משתי האפשרויות:
+
+#### אפשרות א' – דרך Swagger UI
 
 1. פתח `https://localhost:7224/swagger`
 2. קרא ל-`GET /api/dev-token` → העתק את ערך `token` מהתשובה
@@ -286,9 +290,7 @@ https://localhost:7224/api/dev-token?idNumber=012345678
 5. לחץ **Authorize** → **Close**
 6. פתח `GET /api/my-requests` → **Try it out** → **Execute**
 
----
-
-### שלב 4 – בדיקה דרך קובץ `.http` ב-VS
+#### אפשרות ב' – דרך קובץ `.http` ב-Visual Studio
 
 1. פתח את `MuniAnnouncements.Api.http`
 2. לחץ **Send Request** מעל בקשת `GET /api/dev-token` – קבל טוקן
