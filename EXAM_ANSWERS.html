@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>תשובות למבחן – MuniAnnouncements_RA</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', Arial, sans-serif;
+      font-size: 14px;
+      line-height: 1.7;
+      color: #1a1a1a;
+      background: #fff;
+      max-width: 900px;
+      margin: 40px auto;
+      padding: 0 32px 60px;
+    }
+    h1 { font-size: 22px; border-bottom: 2px solid #2c5f9e; padding-bottom: 8px; color: #2c5f9e; }
+    h2 { font-size: 17px; margin-top: 36px; color: #2c5f9e; border-right: 4px solid #2c5f9e; padding-right: 10px; }
+    h3 { font-size: 15px; margin-top: 20px; color: #333; }
+    blockquote { background: #f0f4fa; border-right: 4px solid #2c5f9e; margin: 0 0 20px; padding: 8px 14px; color: #444; }
+    table { width: 100%; border-collapse: collapse; margin: 16px 0; font-size: 13px; }
+    th { background: #2c5f9e; color: #fff; padding: 8px 12px; text-align: right; }
+    td { padding: 7px 12px; border-bottom: 1px solid #dde3ed; vertical-align: top; }
+    tr:nth-child(even) td { background: #f7f9fc; }
+    code { background: #eef1f7; padding: 1px 5px; border-radius: 3px; font-family: Consolas, monospace; font-size: 12px; }
+    ul { padding-right: 20px; margin: 6px 0; }
+    li { margin-bottom: 4px; }
+    strong { color: #1a1a1a; }
+    .risk { background: #fff8f0; border-right: 4px solid #e07b00; padding: 10px 14px; margin: 12px 0; border-radius: 3px; }
+    .risk-title { font-weight: bold; color: #b85c00; }
+    .qa { background: #f0f7f0; border-right: 4px solid #2e7d32; padding: 10px 14px; margin: 12px 0; border-radius: 3px; }
+    .qa-title { font-weight: bold; color: #2e7d32; margin-bottom: 6px; }
+    hr { border: none; border-top: 1px solid #dde3ed; margin: 28px 0; }
+    .part-header { background: #2c5f9e; color: #fff; padding: 10px 16px; border-radius: 4px; margin: 40px 0 20px; font-size: 16px; font-weight: bold; }
+    footer { font-size: 12px; color: #888; text-align: center; margin-top: 40px; }
+    @media print {
+      body { margin: 20px; padding: 0; }
+      h2 { page-break-after: avoid; }
+      .part-header { page-break-before: always; }
+    }
+  </style>
+</head>
+<body>
+
+<h1>תשובות למבחן – MuniAnnouncements_RA</h1>
+
+<div style="background:#f0f7f0; border-right: 4px solid #2e7d32; padding: 14px 18px; margin-bottom: 24px; border-radius: 4px; line-height: 1.9;">
+  <p>תודה על המבחן המעניין והמאתגר.</p>
+  <p>עשיתי אותו בעזרת AI – <strong>Amazon Q Developer</strong>, לרוב המודל הוגדר כ-<strong>Auto</strong>.</p>
+  <p>השתדלתי לשאול על מה שלא הובן וללמוד את המושגים החדשים שעלו בעזרתו.<br/>
+  (מושגים על עבודה בשיתוף עם ספקים חיצוניים היו חדשים לי.)</p>
+  <p>קישור לקוד ב-Git: <a href="https://github.com/hirshman/RA_MuniAnnouncements" target="_blank">https://github.com/hirshman/RA_MuniAnnouncements</a></p>
+</div>
+
+<blockquote>חלק א' + חלק ב' + חלק ג' &nbsp;·&nbsp; User Stories, תכנית עבודה, תכנון ואבטחה</blockquote>
+
+<hr />
+
+<div class="part-header">חלק א' – User Stories &amp; Tasks</div>
+
+<!-- ═══ STYLES FROM USER-STORIES ═══ -->
+<style>
+  .badge-row { display: flex; gap: .6rem; flex-wrap: wrap; margin: 1rem 0; }
+  .badge {
+    background: #2c5f9e;
+    color: #fff;
+    border-radius: 20px;
+    padding: .2rem .8rem;
+    font-size: .8rem;
+    font-weight: 600;
+  }
+  .section-title {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #1e3a8a;
+    margin: 1.5rem 0 .75rem;
+    padding-bottom: .4rem;
+    border-bottom: 3px solid #2c5f9e;
+  }
+  .us-card {
+    background: #fff;
+    border-radius: 8px;
+    border: 1px solid #e5e7eb;
+    margin-bottom: 1rem;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0,0,0,.06);
+  }
+  .us-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1rem 1.2rem;
+    cursor: pointer;
+    user-select: none;
+  }
+  .us-header:hover { background: #f9fafb; }
+  .us-id {
+    background: #2c5f9e;
+    color: #fff;
+    border-radius: 6px;
+    padding: .2rem .6rem;
+    font-size: .8rem;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+  .us-title { font-size: 1rem; font-weight: 700; flex: 1; }
+  .us-persona { font-size: .82rem; color: #6b7280; margin-top: .2rem; font-style: italic; }
+  .toggle-icon { font-size: 1rem; color: #2c5f9e; transition: transform .25s; }
+  .us-card.open .toggle-icon { transform: rotate(180deg); }
+  .us-body { display: none; padding: 0 1.2rem 1.2rem; }
+  .us-card.open .us-body { display: block; }
+  .us-card table { font-size: .85rem; }
+  .us-card thead tr { background: #e8f0fe; }
+  .us-card th { color: #1e3a8a; border-bottom: 2px solid #2c5f9e; }
+  .task-id { font-family: monospace; font-weight: 700; color: #2c5f9e; white-space: nowrap; }
+  .time-badge { background: #def7ec; color: #057a55; border-radius: 12px; padding: .1rem .5rem; font-size: .78rem; font-weight: 600; white-space: nowrap; }
+  .time-badge.included { background: #f3f4f6; color: #6b7280; }
+  .cat-frontend .us-id { background: #057a55; }
+  .cat-frontend .us-card thead tr { background: #def7ec; }
+  .cat-tests .us-id { background: #b45309; }
+  .cat-tests thead tr { background: #fef3c7; }
+  .cat-tests th { color: #b45309; border-color: #b45309; }
+  .clarification-list { list-style: none; padding: 0; }
+  .clarification-list li { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: .9rem 1.1rem; margin-bottom: .6rem; }
+  .assumption { display: inline-block; background: #fef3c7; color: #b45309; border-radius: 4px; padding: .1rem .4rem; font-size: .78rem; font-weight: 700; margin-right: .3rem; }
+  .summary-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 1rem; margin-top: 1rem; }
+  .summary-card { background: #fff; border: 1px solid #e5e7eb; border-radius: 8px; padding: 1rem; text-align: center; }
+  .summary-card .num { font-size: 1.8rem; font-weight: 800; color: #2c5f9e; }
+  .summary-card .lbl { font-size: .8rem; color: #6b7280; margin-top: .2rem; }
+  .summary-card.total .num { color: #1e3a8a; }
+</style>
+
+<div class="badge-row">
+  <span class="badge">C# / .NET 8</span>
+  <span class="badge">Microservice</span>
+  <span class="badge">Angular</span>
+  <span class="badge">MongoDB</span>
+  <span class="badge">JWT Auth</span>
+  <span class="badge">RTL · נגישות</span>
+</div>
+
+<div class="section-title">🔧 Backend – C# / .NET 8</div>
+
+<div class="us-card cat-backend open" id="us1">
+  <div class="us-header" onclick="this.closest('.us-card').classList.toggle('open')">
+    <span class="us-id">US-1</span>
+    <div style="flex:1">
+      <div class="us-title">צפייה בבקשות שהוגשו</div>
+      <div class="us-persona">כתושב מחובר, אני רוצה לראות את כל הבקשות שהגשתי לרשויות השונות, כדי לעקוב אחר הסטטוס שלהן ממקום אחד.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table><thead><tr><th>Task</th><th>תיאור</th><th>זמן</th></tr></thead><tbody>
+      <tr><td class="task-id">T1.1</td><td>הגדרת מודלים: <code>RawRequest</code>, <code>NormalizedRequest</code>, <code>ServiceCatalogEntry</code></td><td><span class="time-badge">1h</span></td></tr>
+      <tr><td class="task-id">T1.2</td><td>ממשק <code>IFormsSystemClient</code> + מימוש Mock עם Hard-Coded data</td><td><span class="time-badge">1h</span></td></tr>
+      <tr><td class="task-id">T1.3</td><td>ממשק <code>IServiceCatalogRepository</code> + מימוש Mock עם Hard-Coded data</td><td><span class="time-badge">1h</span></td></tr>
+      <tr><td class="task-id">T1.4</td><td><code>NormalizationService</code> – לוגיקת נרמול מלאה: שם שירות, רשות, תרגום סטטוס, actionRequired, isOverdue, מיון, הסתרת ת"ז</td><td><span class="time-badge">3h</span></td></tr>
+      <tr><td class="task-id">T1.5</td><td><code>RequestsController</code> – <code>GET /api/my-requests</code>, קריאת claim <code>idNumber</code></td><td><span class="time-badge">1h</span></td></tr>
+      <tr><td class="task-id">T1.6</td><td>רישום DI ב-<code>Program.cs</code> + JWT Middleware</td><td><span class="time-badge">1h</span></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div class="us-card cat-backend" id="us2">
+  <div class="us-header" onclick="this.closest('.us-card').classList.toggle('open')">
+    <span class="us-id">US-2</span>
+    <div style="flex:1">
+      <div class="us-title">הצגת סטטוס, פעולה נדרשת וחריגת SLA</div>
+      <div class="us-persona">כתושב, אני רוצה לדעת אם נדרשת ממני פעולה ואם הבקשה חרגה מזמן הטיפול.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table><thead><tr><th>Task</th><th>תיאור</th><th>זמן</th></tr></thead><tbody>
+      <tr><td class="task-id">T2.1</td><td>לוגיקת <code>actionRequired</code></td><td><span class="time-badge included">כלול ב-T1.4</span></td></tr>
+      <tr><td class="task-id">T2.2</td><td>לוגיקת <code>isOverdue</code> – רק לבקשות שאינן ב-<code>finalStatuses</code></td><td><span class="time-badge included">כלול ב-T1.4</span></td></tr>
+      <tr><td class="task-id">T2.3</td><td>מיון: <code>actionRequired</code> קודם, אחר כך <code>lastUpdate</code> DESC</td><td><span class="time-badge included">כלול ב-T1.4</span></td></tr>
+      <tr><td class="task-id">T2.4</td><td>סטטוס לא מוכר → "בטיפול" + Log</td><td><span class="time-badge included">כלול ב-T1.4</span></td></tr>
+      <tr><td class="task-id">T2.5</td><td><code>formCode</code> לא בקטלוג → סינון + Log</td><td><span class="time-badge included">כלול ב-T1.4</span></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div class="section-title">🎨 Frontend – Angular</div>
+
+<div class="us-card cat-frontend" id="us3">
+  <div class="us-header" onclick="this.closest('.us-card').classList.toggle('open')">
+    <span class="us-id">US-3</span>
+    <div style="flex:1">
+      <div class="us-title">רכיב "הבקשות שלי" – תצוגה ראשית</div>
+      <div class="us-persona">כתושב, אני רוצה לראות את הבקשות בממשק ברור, נגיש ורספונסיבי.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table><thead><tr><th>Task</th><th>תיאור</th><th>זמן</th></tr></thead><tbody>
+      <tr><td class="task-id">T3.1</td><td><code>MyRequestsComponent</code> – קריאה ל-API והצגת רשימת בקשות</td><td><span class="time-badge">2h</span></td></tr>
+      <tr><td class="task-id">T3.2</td><td>סימון בולט לבקשות עם <code>actionRequired: true</code> + CTA</td><td><span class="time-badge">1h</span></td></tr>
+      <tr><td class="task-id">T3.3</td><td>סימון ויזואלי לבקשות עם <code>isOverdue: true</code></td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T3.4</td><td>מצב ריק – "עדיין לא הגשת בקשות"</td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T3.5</td><td>מצב שגיאה – הודעה ידידותית + כפתור "נסה שוב"</td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T3.6</td><td>RTL, עיצוב רספונסיבי, נגישות מלאה (ARIA, contrast, keyboard nav)</td><td><span class="time-badge">1h</span></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div class="section-title">🧪 בדיקות יחידה</div>
+
+<div class="us-card cat-tests" id="us4">
+  <div class="us-header" onclick="this.closest('.us-card').classList.toggle('open')">
+    <span class="us-id">US-4</span>
+    <div style="flex:1">
+      <div class="us-title">כיסוי בדיקות לוגיקת הנרמול</div>
+      <div class="us-persona">כמפתח, אני רוצה לוודא שלוגיקת הנרמול עובדת נכון בכל תרחיש קצה.</div>
+    </div>
+    <span class="toggle-icon">▼</span>
+  </div>
+  <div class="us-body">
+    <table><thead><tr><th>Task</th><th>תיאור</th><th>זמן</th></tr></thead><tbody>
+      <tr><td class="task-id">T4.1</td><td>נרמול תקין – שם שירות, רשות וסטטוס מוחזרים נכון</td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T4.2</td><td>סטטוס לא מוכר → "בטיפול" + וידוא Log</td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T4.3</td><td>חריגת SLA → <code>isOverdue: true</code></td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T4.4</td><td><code>formCode</code> לא בקטלוג → בקשה מסוננת</td><td><span class="time-badge">0.5h</span></td></tr>
+      <tr><td class="task-id">T4.5</td><td>מיון – <code>actionRequired</code> קודם</td><td><span class="time-badge">0.5h</span></td></tr>
+    </tbody></table>
+  </div>
+</div>
+
+<div class="section-title">❓ שאלות הבהרה</div>
+<ul class="clarification-list">
+  <li><strong>Q1 – אימות JWT:</strong> האם קיים Identity Provider מרכזי?<br/><span class="assumption">הנחה</span> JWT סטנדרטי עם claim <code>idNumber</code>, מפתח סימטרי מה-config.</li>
+  <li><strong>Q2 – isOverdue ובקשות סגורות:</strong><br/><span class="assumption">הנחה</span> רק בקשות שאינן ב-<code>finalStatuses</code> נבדקות לחריגת SLA.</li>
+  <li><strong>Q3 – פורמט תאריך:</strong><br/><span class="assumption">הנחה</span> DD/MM/YYYY.</li>
+  <li><strong>Q4 – ריבוי רשויות:</strong><br/><span class="assumption">הנחה</span> כל <code>requestId</code> ייחודי; ניתן להגיש אותו טופס לרשויות שונות.</li>
+</ul>
+
+<div class="section-title">📊 סיכום זמנים</div>
+<div class="summary-grid">
+  <div class="summary-card"><div class="num">8h</div><div class="lbl">🔧 Backend</div></div>
+  <div class="summary-card"><div class="num">5.5h</div><div class="lbl">🎨 Frontend</div></div>
+  <div class="summary-card"><div class="num">2.5h</div><div class="lbl">🧪 בדיקות</div></div>
+  <div class="summary-card total"><div class="num">16h</div><div class="lbl">⏱ סה"כ</div></div>
+</div>
+
+<hr />
+
+<div class="part-header">חלק ב' – תכנית עבודה ואינטגרציה</div>
+
+<h2>1. שלבים ואבני דרך</h2>
+<table>
+  <thead>
+    <tr><th>שבועות</th><th>שלב</th><th>מה הספק מפתח</th><th>אבן דרך</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1–2</td>
+      <td>יסודות</td>
+      <td>מודלים, Interfaces, Mock clients, NormalizationService + בדיקות יחידה (T1.1–T1.4, T4.1–T4.5)</td>
+      <td>✅ כל הלוגיקה העסקית עובדת מול Mock; בדיקות ירוקות</td>
+    </tr>
+    <tr>
+      <td>3–4</td>
+      <td>API ואינטגרציה</td>
+      <td>Controller, JWT middleware, DI, Swagger, קובץ <code>.http</code> (T1.5–T1.6)</td>
+      <td>✅ <code>GET /api/my-requests</code> מחזיר תשובה תקינה מול Mock</td>
+    </tr>
+    <tr>
+      <td>5–6</td>
+      <td>חיבור אמיתי</td>
+      <td>החלפת <code>MockFormsSystemClient</code> במימוש אמיתי כשה-API מוכן; חיבור MongoDB לקטלוג</td>
+      <td>✅ E2E זורם מול נתונים אמיתיים בסביבת Staging</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>QA &amp; עומסים</td>
+      <td>בדיקות אינטגרציה, אבטחה, עומסים – סבב רשמי</td>
+      <td>✅ כל תרחישי חובה עוברים; אפס באגים קריטיים פתוחים</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>ייצור</td>
+      <td>תיקוני bugs, הדלקת Feature Flag, Go/No-Go</td>
+      <td>✅ עלייה לייצור</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>2. תיאום עם צוותים מקבילים</h2>
+
+<h3>האזור האישי</h3>
+<ul>
+  <li><strong>מה לסגור (שבוע 1):</strong> מבנה ה-JWT המדויק (claim name, issuer, מפתח סימטרי), נקודת ה-mount של הרכיב, CORS.</li>
+  <li><strong>מתי:</strong> Kick-off שבוע 1; אישור סופי שבוע 3 לפני בדיקות E2E.</li>
+</ul>
+
+<h3>מערכת הטפסים</h3>
+<ul>
+  <li><strong>מה לסגור (שבוע 1):</strong> חוזה ה-API – schema של <code>RawRequest</code>, pagination, קודי שגיאה, SLA זמן תגובה.</li>
+  <li><strong>עבודה ללא API מוכן:</strong> <code>MockFormsSystemClient</code> מממש את <code>IFormsSystemClient</code> עם נתוני Hard-Coded. כשה-API מוכן (צפוי שבוע 4–5) מחליפים רק את המימוש – אפס שינוי בקוד עסקי.</li>
+  <li><strong>Fallback:</strong> אם ה-API מתעכב מעבר לשבוע 5 – עולים לייצור עם Mock ו-Feature Flag שמסתיר את הרכיב.</li>
+</ul>
+
+<h3>שדירת המידע</h3>
+<ul>
+  <li><strong>גרסה נוכחית:</strong> אין תלות – Real-time מחוץ לסקופ.</li>
+  <li><strong>מה לסגור עכשיו (שבוע 2):</strong> פורמט אירוע שינוי סטטוס (schema, topic name) לתיעוד בלבד, כדי שה-interface יהיה מוכן לגרסה הבאה ללא refactor.</li>
+</ul>
+
+<hr />
+
+<h2>3. תכנית QA</h2>
+<table>
+  <thead>
+    <tr><th>סוג בדיקה</th><th>מי</th><th>מתי</th><th>תרחישי חובה לפני ייצור</th></tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Unit Tests (xUnit)</td>
+      <td>ספק</td>
+      <td>שוטף (CI) – שבועות 1–8</td>
+      <td>T4.1–T4.5 ירוקים בכל PR</td>
+    </tr>
+    <tr>
+      <td>הכנת תכנית בדיקות + נתוני בדיקה</td>
+      <td>QA</td>
+      <td>שבועות 1–2</td>
+      <td>תרחישים מוגדרים, נתוני Mock מכסים edge cases</td>
+    </tr>
+    <tr>
+      <td>בדיקות API ידניות (Swagger / <code>.http</code>)</td>
+      <td>QA</td>
+      <td>שבועות 3–4</td>
+      <td>כל תשובות ה-API תקינות מול Mock</td>
+    </tr>
+    <tr>
+      <td>E2E ראשוני (Staging)</td>
+      <td>QA</td>
+      <td>שבועות 5–6</td>
+      <td>זרימה מלאה עם חיבור אמיתי: login ← רכיב ← רשימה עם סטטוס, actionRequired, isOverdue</td>
+    </tr>
+    <tr>
+      <td>Integration Tests</td>
+      <td>ספק + TL</td>
+      <td>שבוע 7</td>
+      <td>תושב מקבל רשימה נכונה; תושב ללא בקשות מקבל <code>[]</code></td>
+    </tr>
+    <tr>
+      <td>Security</td>
+      <td>TL</td>
+      <td>שבוע 7</td>
+      <td>טוקן פג תוקף ← 401; טוקן של תושב אחר ← 0 בקשות; <code>applicantId</code> לא מוחזר בתשובה</td>
+    </tr>
+    <tr>
+      <td>Load</td>
+      <td>ספק</td>
+      <td>שבוע 7</td>
+      <td>200 req/s → p95 &lt; 500ms, 0 errors</td>
+    </tr>
+    <tr>
+      <td>רגרסיה מלאה + Go/No-Go</td>
+      <td>QA</td>
+      <td>שבוע 8</td>
+      <td>כל תרחישי חובה עוברים; אפס באגים קריטיים פתוחים</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>4. סיכונים מרכזיים</h2>
+
+<div class="risk">
+  <div class="risk-title">סיכון 1 – API מערכת הטפסים מתעכב</div>
+  הסיכון הגבוה ביותר. אופציה לצמצום נזק: <code>IFormsSystemClient</code> מבודד את התלות; Mock מאפשר פיתוח ובדיקות מלאות במקביל.<br/><br/>
+  <strong>Feature Flag</strong> – מנגנון שמאפשר להפעיל או לכבות פיצ'ר בלי לפרוס קוד חדש. הרכיב קיים בייצור אבל מוסתר, ומדליקים אותו רק כשה-API מוכן: <code>if (featureFlags.MyRequests) { show component }</code>. כך ניתן לעלות לייצור בזמן גם אם ה-API לא מוכן.
+</div>
+
+<div class="risk">
+  <div class="risk-title">סיכון 2 – חוזה JWT לא מסונכרן עם האזור האישי</div>
+  אם ה-claim name או המפתח שונים מהצפוי – כל הזדהות נשברת. אופציה לצמצום נזק: לנעול את החוזה בשבוע 1 ולבדוק E2E מול האזור האישי כבר בשבוע 4, לא בשבוע 7.
+</div>
+
+<div class="risk">
+  <div class="risk-title">סיכון 3 – ספק חיצוני לא עומד בלוח הזמנים</div>
+  אופציה לצמצום נזק: Milestone ברור בסוף שבוע 2 (בדיקות ירוקות + Mock עובד). אם לא עומדים – מזהים את הפיגור מוקדם ומחליטים על צמצום סקופ (למשל: דחיית חיבור MongoDB לגרסה הבאה).
+</div>
+
+<hr />
+
+<div class="part-header">חלק ג' – שאלות תכנון ואבטחה</div>
+
+<h2>שאלה 1 – מידע אישי: הגנה על ת"ז ונתוני בקשות</h2>
+<div class="qa">
+  <ul>
+    <li><strong>קוד:</strong> <code>applicantId</code> (ת"ז) לא נכלל ב-<code>NormalizedRequest</code> – לא מוחזר ללקוח בשום מקרה. ה-<code>idNumber</code> מגיע רק מה-JWT claim, לא מפרמטר URL.</li>
+    <li><strong>לוגים:</strong> לא מדפיסים ת"ז בשלמותה – לכל היותר 4 ספרות אחרונות לצורך debugging. לא מדפיסים תוכן בקשות של תושבים.</li>
+    <li><strong>תקשורת:</strong> HTTPS בלבד בין כל הרכיבים. JWT חתום עם מפתח סימטרי מה-config (לא hard-coded). בייצור – מפתח מגיע מ-Secret Manager ולא מ-appsettings.</li>
+    <li><strong>הרשאות:</strong> כל endpoint מוגן ב-<code>[Authorize]</code>; תושב מקבל רק את הבקשות שלו לפי ה-claim שלו.</li>
+  </ul>
+</div>
+
+<h2>שאלה 2 – זמינות: מערכת הטפסים איטית או לא זמינה</h2>
+<div class="qa">
+  <ul>
+    <li><strong>Timeout:</strong> מגדירים <code>HttpClient</code> עם timeout של 3–5 שניות. חריגה מחזירה 503 עם הודעה ברורה.</li>
+    <li><strong>Retry:</strong> ניסיון חוזר פעמיים עם Exponential Backoff (למשל דרך Polly) – רק על שגיאות רשת, לא על 4xx.</li>
+    <li><strong>Circuit Breaker:</strong> אחרי 5 כשלונות רצופים – Circuit נפתח ל-30 שניות; השירות מחזיר מיד 503 בלי לחכות. מונע עומס מדורג על מערכת כושלת.</li>
+    <li><strong>Cache:</strong> תוצאות ניתן לשמור ב-Memory Cache לדקה-שתיים – מפחית עומס ומאפשר תגובה גם כשה-API איטי. מתאים כי הנתונים לא משתנים בתדירות גבוהה.</li>
+    <li><strong>תגובה ללקוח:</strong> 503 עם <code>{ "error": "השירות אינו זמין כרגע, נסה שוב מאוחר יותר" }</code> – לא חושפים פרטי שגיאה פנימיים.</li>
+  </ul>
+</div>
+
+<h2>שאלה 3 – עדכונים בזמן אמת: אירועי שינוי סטטוס משדירת המידע</h2>
+<div class="qa">
+  <ul>
+    <li><strong>אינטגרציה:</strong> השירות נרשם כ-Consumer על topic בשדירת המידע (למשל Kafka או RabbitMQ). כל אירוע מכיל <code>requestId</code> + <code>newStatusCode</code> + <code>authorityId</code>.</li>
+    <li><strong>עיבוד:</strong> בקבלת אירוע – מעדכנים את הסטטוס ב-Cache או ב-DB, ומשדרים ללקוח דרך WebSocket / SSE.</li>
+    <li><strong>כפילות (Idempotency):</strong> כל אירוע נושא <code>eventId</code> ייחודי. לפני עיבוד בודקים אם ה-<code>eventId</code> כבר טופל (שמור ב-Redis או MongoDB). אם כן – מדלגים בשקט. כך אירוע שמגיע פעמיים לא גורם לעדכון כפול.</li>
+    <li><strong>גרסה נוכחית:</strong> מחוץ לסקופ – אבל ה-interface מתוכנן כך שהוספת Consumer לא תדרוש שינוי בקוד העסקי.</li>
+  </ul>
+</div>
+
+<h2>שאלה 4 – MongoDB: אינדקסים ואחסון בקשות</h2>
+<div class="qa">
+  <ul>
+    <li><strong>אינדקסים על ServiceCatalog:</strong>
+      <ul>
+        <li><code>{ formCode: 1 }</code> – שאילתה ראשית לפי קוד טופס (unique)</li>
+        <li><code>{ "authorities.authorityId": 1 }</code> – אם שואלים לפי רשות ספציפית</li>
+      </ul>
+    </li>
+    <li><strong>האם לשמור בקשות ב-MongoDB?</strong> לא בגרסה הנוכחית – הבקשות חיות במערכת הטפסים, אנחנו רק קוראים ומנרמלים. שמירת עותק תיצור בעיית סנכרון: מי הגורם האמת? מי מעדכן כשהסטטוס משתנה?</li>
+    <li><strong>המחיר של שמירת עותק:</strong> צורך לוגיקת סנכרון (Consumer על אירועי שינוי), טיפול בקונפליקטים, ועלות אחסון. מוצדק רק אם צריך היסטוריה או שה-API של מערכת הטפסים איטי מאוד ורוצים Cache עמיד.</li>
+  </ul>
+</div>
+
+<h2>שאלה 5 – ניהול גרסאות: הוספת שדה חובה בלי לשבור צרכנים</h2>
+<div class="qa">
+  <ul>
+    <li><strong>שלב 1 – הוספה כ-optional:</strong> מוסיפים את השדה החדש עם ערך ברירת מחדל (<code>null</code> או ערך סביר). הצרכן הקיים ממשיך לעבוד ומתעלם מהשדה.</li>
+    <li><strong>שלב 2 – גרסה חדשה:</strong> אם השדה חייב להיות חובה – פותחים <code>/api/v2/my-requests</code> עם ה-schema החדש. מריצים v1 ו-v2 במקביל עם תאריך deprecation מוגדר.</li>
+    <li><strong>תיאום:</strong> מודיעים לאזור האישי מראש עם זמן מספיק למיגרציה, ומתעדים ב-Swagger את ההבדל בין הגרסאות.</li>
+    <li><strong>בפרויקט הנוכחי:</strong> <code>NormalizedRequest</code> מוגדר ב-Core – שינוי שם שדה או הסרה הם breaking changes. הוספת שדה חדש עם <code>?</code> (nullable) היא safe.</li>
+  </ul>
+</div>
+
+<hr />
+<footer>MuniAnnouncements_RA &nbsp;·&nbsp; תשובות למבחן &nbsp;·&nbsp; חלק ב' + חלק ג'</footer>
+
+</body>
+</html>
