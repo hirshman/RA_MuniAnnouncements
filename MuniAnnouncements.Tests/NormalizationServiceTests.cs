@@ -3,6 +3,7 @@ using Microsoft.Extensions.Logging.Abstractions;
 using MuniAnnouncements.Core.Interfaces;
 using MuniAnnouncements.Core.Models.Db;
 using MuniAnnouncements.Core.Models.External;
+using MuniAnnouncements.Core.Models.Response;
 using MuniAnnouncements.Services;
 
 namespace MuniAnnouncements.Tests;
@@ -132,5 +133,23 @@ public class NormalizationServiceTests
 
         Assert.Equal("F-ACTION", results[0].RequestId);
         Assert.True(results[0].ActionRequired);
+    }
+
+    // ── T4.6 – ת"ז (applicantId) לא מוחזרת ללקוח ─────────────────────────────
+
+    [Fact]
+    public async Task T4_6_ApplicantId_NotReturnedToClient()
+    {
+        var svc = Build(new StubForms([BaseRaw("2")]), new StubCatalog(DefaultCatalogEntry()));
+
+        var results = await svc.NormalizeAsync("012345678");
+
+        Assert.Single(results);
+        // וידוא ש-NormalizedRequest לא מכיל שדה applicantId כלל
+        var props = typeof(NormalizedRequest).GetProperties();
+        Assert.DoesNotContain(props, p => p.Name.Equals("ApplicantId", StringComparison.OrdinalIgnoreCase));
+        // וידוא שהת"ז לא מופיעה בשום שדה של התשובה
+        var json = System.Text.Json.JsonSerializer.Serialize(results[0]);
+        Assert.DoesNotContain("012345678", json);
     }
 }
