@@ -83,7 +83,8 @@
 MuniAnnouncements/
 ├── MuniAnnouncements.Api/
 │   ├── Controllers/
-│   │   └── RequestsController.cs
+│   │   ├── RequestsController.cs
+│   │   └── DevTokenController.cs    ← מייצר JWT לבדיקה (#if DEBUG בלבד)
 │   ├── Properties/
 │   │   └── launchSettings.json
 │   ├── Program.cs
@@ -267,7 +268,7 @@ dotnet run
 
 ### שלב 2 – קבלת JWT Token לבדיקה
 
-> ⚠️ endpoint זה זמין **בסביבת Development בלבד** – אינו קיים ב-Release/Production.
+> ⚠️ endpoint זה קומפל **בסביבת Debug בלבד** (`#if DEBUG`) – אינו קיים ב-Release/Production.
 
 לאחר הרצת ה-API, פתח בדפדפן:
 ```
@@ -296,6 +297,29 @@ https://localhost:7224/api/dev-token?idNumber=012345678
 2. לחץ **Send Request** מעל בקשת `GET /api/dev-token` – קבל טוקן
 3. הדבק את הטוקן בשדה `@token`
 4. לחץ **Send Request** מעל בקשת `GET /api/my-requests`
+
+---
+
+### הרצת צד הלקוח (Angular)
+
+#### דרישות מקדימות
+- [Node.js](https://nodejs.org) גרסה 18 ומעלה
+
+#### הרצה
+```bash
+cd my-requests-ui
+npm install
+npm start
+```
+הרכיב יהיה זמין ב: `http://localhost:4200`
+
+> ⚠️ יש להריץ את ה-API (שלב 1) לפני הרצת צד הלקוח.
+
+> **טוקן בסביבת dev:** הרכיב מביא את הטוקן **אוטומטית** מ-`/api/dev-token` דרך `app.config.ts` – אין צורך להכניס טוקן ידנית ל-`localStorage`.
+
+> **כתובת ה-API** מוגדרת ב-`src/environments/environment.ts` (ברירת מחדל: `https://localhost:7224`).
+
+> **CORS:** ה-API מאפשר בקשות מ-`http://localhost:4200` בלבד (מוגדר ב-`appsettings.json`).
 
 ---
 
