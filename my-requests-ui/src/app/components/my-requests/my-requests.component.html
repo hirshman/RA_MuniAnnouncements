@@ -1,0 +1,45 @@
+<section class="my-requests" aria-label="הבקשות שלי" dir="rtl">
+  <h2 class="title">הבקשות שלי</h2>
+
+  @if (loading()) {
+    <div class="state-msg" role="status" aria-live="polite">טוען בקשות...</div>
+  } @else if (error()) {
+    <div class="state-error" role="alert">
+      <p>אירעה שגיאה בטעינת הבקשות. אנא נסה שוב.</p>
+      <button (click)="load()" class="btn-retry">נסה שוב</button>
+    </div>
+  } @else if (requests().length === 0) {
+    <div class="state-msg" role="status">עדיין לא הגשת בקשות.</div>
+  } @else {
+    <ul class="requests-list">
+      @for (req of requests(); track req.requestId) {
+        <li
+          class="request-card"
+          [class.action-required]="req.actionRequired"
+          [class.overdue]="req.isOverdue"
+          [attr.aria-label]="req.serviceName + ' – ' + req.status"
+        >
+          <div class="card-header">
+            <span class="service-name">{{ req.serviceName }}</span>
+            <span class="authority">{{ req.authorityName }}</span>
+          </div>
+
+          <div class="card-body">
+            <span class="status">{{ req.status }}</span>
+            @if (req.actionRequired) {
+              <span class="badge badge-action" role="img" aria-label="נדרשת פעולה">⚠️ נדרשת פעולה מצדך</span>
+            }
+            @if (req.isOverdue) {
+              <span class="badge badge-overdue" role="img" aria-label="חריגה מזמן טיפול">🕐 חריגה מזמן טיפול</span>
+            }
+          </div>
+
+          <div class="card-footer">
+            <span>הוגש: {{ req.submittedAt }}</span>
+            <span>עדכון אחרון: {{ req.lastUpdate }}</span>
+          </div>
+        </li>
+      }
+    </ul>
+  }
+</section>
