@@ -8,6 +8,13 @@ using MuniAnnouncements.Services.Mocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// ── CORS – מאפשר לרכיב Angular לפנות ל-API ──
+builder.Services.AddCors(options =>
+    options.AddPolicy("Client", policy =>
+        policy.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [])
+              .AllowAnyHeader()
+              .AllowAnyMethod()));
+
 // ── DI – רישום שירותים ──
 builder.Services.AddScoped<IFormsSystemClient, MockFormsSystemClient>();
 builder.Services.AddScoped<IServiceCatalogRepository, MockServiceCatalogRepository>();
@@ -74,6 +81,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors("Client");
 app.UseAuthentication();
 app.UseAuthorization();
 app.MapControllers();
