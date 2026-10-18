@@ -23,7 +23,7 @@ public class NormalizationService : INormalizationService
         _logger            = logger;
     }
 
-    public async Task<IEnumerable<NormalizedRequest>> NormalizeAsync(string idNumber)
+    public async Task<List<NormalizedRequest>> NormalizeAsync(string idNumber)
     {
         var rawRequests = await _formsClient.GetRequestsByApplicantAsync(idNumber);
         var result      = new List<NormalizedRequest>();
@@ -76,6 +76,7 @@ public class NormalizationService : INormalizationService
         // 4.6 – מיון: actionRequired קודם, אחר כך lastUpdate DESC (לפי DateTime, לא string)
         return result
             .OrderByDescending(r => r.ActionRequired)
-            .ThenByDescending(r => r.LastUpdateDate);
+            .ThenByDescending(r => r.LastUpdateDate)
+            .ToList();
     }
 }

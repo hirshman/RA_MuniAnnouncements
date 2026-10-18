@@ -67,7 +67,7 @@ public class NormalizationServiceTests
     {
         var svc = Build(new StubForms([BaseRaw("2")]), new StubCatalog(DefaultCatalogEntry()));
 
-        var results = (await svc.NormalizeAsync("012345678")).ToList();
+        var results = await svc.NormalizeAsync("012345678");
 
         Assert.Single(results);
         Assert.Equal("הנחה בארנונה",   results[0].ServiceName);
@@ -86,7 +86,7 @@ public class NormalizationServiceTests
     {
         var svc = Build(new StubForms([BaseRaw("99")]), new StubCatalog(DefaultCatalogEntry()));
 
-        var results = (await svc.NormalizeAsync("012345678")).ToList();
+        var results = await svc.NormalizeAsync("012345678");
 
         Assert.Single(results);
         Assert.Equal("בטיפול", results[0].Status);
@@ -101,7 +101,7 @@ public class NormalizationServiceTests
         var raw = BaseRaw("2", DateTime.UtcNow.AddDays(-60));
         var svc = Build(new StubForms([raw]), new StubCatalog(DefaultCatalogEntry()));
 
-        var results = (await svc.NormalizeAsync("012345678")).ToList();
+        var results = await svc.NormalizeAsync("012345678");
 
         Assert.True(results[0].IsOverdue);
     }
@@ -113,7 +113,7 @@ public class NormalizationServiceTests
     {
         var svc = Build(new StubForms([BaseRaw()]), new StubCatalog(null));
 
-        var results = (await svc.NormalizeAsync("012345678")).ToList();
+        var results = await svc.NormalizeAsync("012345678");
 
         Assert.Empty(results);
     }
@@ -128,7 +128,7 @@ public class NormalizationServiceTests
 
         var svc = Build(new StubForms([rawNormal, rawAction]), new StubCatalog(DefaultCatalogEntry()));
 
-        var results = (await svc.NormalizeAsync("012345678")).ToList();
+        var results = await svc.NormalizeAsync("012345678");
 
         Assert.Equal("F-ACTION", results[0].RequestId);
         Assert.True(results[0].ActionRequired);

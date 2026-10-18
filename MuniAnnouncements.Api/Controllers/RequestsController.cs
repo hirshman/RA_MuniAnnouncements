@@ -27,6 +27,6 @@ public class RequestsController : ControllerBase
             return Unauthorized("claim idNumber חסר בטוקן");
 
         var requests = await _normalizationService.NormalizeAsync(idNumber);
-        return Ok(new { requests });
+        return Ok(requests);
     }
 }

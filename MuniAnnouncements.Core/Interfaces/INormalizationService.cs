@@ -7,5 +7,5 @@ namespace MuniAnnouncements.Core.Interfaces;
 /// </summary>
 public interface INormalizationService
 {
-    Task<IEnumerable<NormalizedRequest>> NormalizeAsync(string idNumber);
+    Task<List<NormalizedRequest>> NormalizeAsync(string idNumber);
 }
