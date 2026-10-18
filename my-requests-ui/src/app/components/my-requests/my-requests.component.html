@@ -27,10 +27,14 @@
           <div class="card-body">
             <span class="status">{{ req.status }}</span>
             @if (req.actionRequired) {
-              <span class="badge badge-action" role="img" aria-label="נדרשת פעולה">⚠️ נדרשת פעולה מצדך</span>
+              <span class="badge badge-action">
+                <span aria-hidden="true">⚠️</span> נדרשת פעולה מצדך
+              </span>
             }
             @if (req.isOverdue) {
-              <span class="badge badge-overdue" role="img" aria-label="חריגה מזמן טיפול">🕐 חריגה מזמן טיפול</span>
+              <span class="badge badge-overdue">
+                <span aria-hidden="true">🕐</span> חריגה מזמן טיפול
+              </span>
             }
           </div>
 

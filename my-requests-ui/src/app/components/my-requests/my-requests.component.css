@@ -18,7 +18,7 @@
 /* ── מצבי טעינה / שגיאה / ריק ── */
 .state-msg {
   text-align: center;
-  color: #6b7280;
+  color: #4b5563;
   padding: 2rem;
 }
 
@@ -28,7 +28,7 @@
   border: 1px solid #f98080;
   border-radius: 8px;
   padding: 1.5rem;
-  color: #c81e1e;
+  color: #9b1c1c;
 }
 
 .btn-retry {
@@ -42,7 +42,7 @@
   font-size: 0.95rem;
 }
 .btn-retry:hover { background: #1e3a8a; }
-.btn-retry:focus { outline: 3px solid #93c5fd; }
+.btn-retry:focus-visible { outline: 3px solid #93c5fd; outline-offset: 2px; }
 
 /* ── רשימה ── */
 .requests-list {
@@ -67,13 +67,13 @@
 
 /* T3.2 – actionRequired */
 .request-card.action-required {
-  border-right: 5px solid #f59e0b;
+  border-inline-end: 5px solid #f59e0b;
   background: #fffbeb;
 }
 
 /* T3.3 – isOverdue */
 .request-card.overdue {
-  border-right: 5px solid #ef4444;
+  border-inline-end: 5px solid #ef4444;
   background: #fff5f5;
 }
 
@@ -94,7 +94,7 @@
 
 .authority {
   font-size: 0.85rem;
-  color: #6b7280;
+  color: #4b5563;
 }
 
 .card-body {
@@ -119,24 +119,31 @@
 
 .badge-action {
   background: #fef3c7;
-  color: #92400e;
+  color: #78350f;
 }
 
 .badge-overdue {
   background: #fde8e8;
-  color: #c81e1e;
+  color: #9b1c1c;
 }
 
 .card-footer {
   display: flex;
   gap: 1.5rem;
   font-size: 0.8rem;
-  color: #9ca3af;
+  font-weight: 500;
+  color: #374151;
   flex-wrap: wrap;
 }
 
 /* ── רספונסיבי ── */
+@media (max-width: 768px) {
+  .my-requests { padding: 0 1.5rem; }
+  .request-card { padding: 1rem; }
+}
+
 @media (max-width: 480px) {
+  .my-requests { padding: 0 0.75rem; }
   .card-header { flex-direction: column; }
   .card-footer { flex-direction: column; gap: 0.25rem; }
 }

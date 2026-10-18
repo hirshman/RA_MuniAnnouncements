@@ -4,7 +4,6 @@ import { NormalizedRequest } from '../../models/normalized-request';
 
 @Component({
   selector: 'app-my-requests',
-  standalone: true,
   templateUrl: './my-requests.component.html',
   styleUrl: './my-requests.component.css'
 })
