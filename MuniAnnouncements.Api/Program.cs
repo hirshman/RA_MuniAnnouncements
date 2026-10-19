@@ -8,22 +8,29 @@ using MuniAnnouncements.Services.Mocks;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// ── CORS – מאפשר לרכיב Angular לפנות ל-API ──
+// ══════════════════════════════════════════════════════════════════════════════
+// CORS – מאפשר לרכיב Angular (localhost:4200) לפנות ל-API
+// ══════════════════════════════════════════════════════════════════════════════
 builder.Services.AddCors(options =>
     options.AddPolicy("Client", policy =>
         policy.WithOrigins(builder.Configuration.GetSection("Cors:AllowedOrigins").Get<string[]>() ?? [])
               .AllowAnyHeader()
               .AllowAnyMethod()));
 
-// ── DI – רישום שירותים ──
-builder.Services.AddScoped<IFormsSystemClient, MockFormsSystemClient>();
-builder.Services.AddScoped<IServiceCatalogRepository, MockServiceCatalogRepository>();
-builder.Services.AddScoped<INormalizationService, NormalizationService>();
+// ══════════════════════════════════════════════════════════════════════════════
+// Dependency Injection – רישום שירותים
+// להחלפת Mock במימוש אמיתי: שנה רק את השורות הבאות
+// ══════════════════════════════════════════════════════════════════════════════
+builder.Services.AddScoped<IFormsSystemClient, MockFormsSystemClient>();       // דרישה 2: פנייה למערכת הטפסים
+builder.Services.AddScoped<IServiceCatalogRepository, MockServiceCatalogRepository>(); // דרישה 3: פנייה ל-MongoDB
+builder.Services.AddScoped<INormalizationService, NormalizationService>();     // דרישה 4: לוגיקת נרמול
 
-// ── Controllers ──
 builder.Services.AddControllers();
 
-// ── JWT Authentication ──
+// ══════════════════════════════════════════════════════════════════════════════
+// JWT Authentication – דרישה 1: נקודת קצה מאובטחת
+// המשתמש מזוהה לפי claim "idNumber" בטוקן
+// ══════════════════════════════════════════════════════════════════════════════
 var jwtKey = builder.Configuration["Jwt:Key"]!;
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
